@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { stateContext } from "../../store/State";
 import { loginUser } from "../../api/slack";
 import EmailInput from "./input/EmailInput";
-import PasswordInput from "./PasswordInput";
+import PasswordInput from "./input/PasswordInput";
 
 const FormLogin = () => {
   const { setClient, setHeaders } = useContext(stateContext);
@@ -25,11 +25,11 @@ const FormLogin = () => {
   };
   return (
     <form onSubmit={handleSubmit} className="max-w-lg rounded border p-5">
-      <h1 className="mb-5 text-xl font-bold">Login</h1>
+      <h1 className="mb-5 text-2xl font-bold">Login</h1>
       <EmailInput id="login_email" setEmail={setEmail} />
       <PasswordInput id="login_password" setPassword={setPassword} />
       {error && <p className="text-error">{error}</p>}
-      <button className="btn mt-2">Submit</button>
+      <button className="btn mt-2 ml-auto block">Submit</button>
     </form>
   );
 };

@@ -6,9 +6,9 @@ import { stateContext } from "../store/State";
 const Root = () => {
   const state = useContext(stateContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    state.client ? navigate("/client") : navigate("/login");
-  }, []);
+  // useEffect(() => {
+  //   state.client ? navigate("/client") : navigate("/login");
+  // }, []);
 
   return (
     <>

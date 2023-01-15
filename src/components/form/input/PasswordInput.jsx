@@ -35,7 +35,7 @@ const PasswordInput = (props) => {
         setError2(error2);
         setConfirmation("");
       } else {
-        if (value1 !== value2) {
+        if (value1 === "" || value1 !== value2) {
           setStatus2("neutral");
           setError2("");
           setConfirmation("");

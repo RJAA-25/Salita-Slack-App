@@ -1,7 +1,16 @@
-import React from "react";
+import Header from "../components/brand/Header";
+import FormRegister from "../components/form/FormRegister";
+import Content from "../components/wrapper/Content";
 
 const Register = () => {
-  return <div>Register</div>;
+  return (
+    <>
+      <Header />
+      <Content>
+        <FormRegister />
+      </Content>
+    </>
+  );
 };
 
 export default Register;

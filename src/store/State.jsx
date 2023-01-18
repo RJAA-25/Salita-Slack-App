@@ -1,20 +1,18 @@
 import { createContext, useState } from "react";
-
-const localClient = JSON.parse(localStorage.getItem("client"));
-const localHeaders = JSON.parse(localStorage.getItem("headers"));
+import { getLocal, removeLocal } from "../helpers/localStorage";
 
 export const stateContext = createContext({});
 
 export const StateProvider = (props) => {
-  const [client, setClient] = useState(localClient || null);
-  const [headers, setHeaders] = useState(localHeaders || null);
+  const [client, setClient] = useState(getLocal("client") || null);
+  const [headers, setHeaders] = useState(getLocal("headers") || null);
   const [users, setUsers] = useState([]);
   const [channels, setChannels] = useState([]);
   const [dMessages, setDMessages] = useState([]);
   const [modal, setModal] = useState(false);
   const logout = () => {
-    localStorage.removeItem("client");
-    localStorage.removeItem("headers");
+    removeLocal("client");
+    removeLocal("headers");
     setClient(null);
     setHeaders(null);
     setUsers([]);

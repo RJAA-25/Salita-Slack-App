@@ -5,8 +5,8 @@ import Content from "../components/wrapper/Content";
 const Login = () => {
   return (
     <>
-      <Header />
       <Content>
+        <Header />
         <FormLogin />
       </Content>
     </>

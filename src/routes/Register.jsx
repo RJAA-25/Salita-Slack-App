@@ -5,8 +5,8 @@ import Content from "../components/wrapper/Content";
 const Register = () => {
   return (
     <>
-      <Header />
       <Content>
+        <Header />
         <FormRegister />
       </Content>
     </>

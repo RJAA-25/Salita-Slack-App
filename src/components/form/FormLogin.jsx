@@ -20,11 +20,15 @@ const FormLogin = () => {
       setError("");
       setClient(login.client);
       setHeaders(login.headers);
+      // navigate("/client/home");
       navigate("/client");
     }
   };
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg rounded border p-5">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-auto max-w-lg rounded border p-5"
+    >
       <h1 className="mb-5 text-2xl font-bold">Login</h1>
       <EmailInput id="login_email" setEmail={setEmail} />
       <PasswordInput id="login_password" setPassword={setPassword} />

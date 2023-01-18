@@ -3,18 +3,23 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import Root from "../routes/Root";
+import Root, { rootLoader, sessionLoader } from "../routes/Root";
 import Error from "../components/errors/Error";
 import Login from "../routes/Login";
 import Register from "../routes/Register";
-import Client from "../routes/Client";
+import Client, { clientLoader } from "../routes/Client";
+import Landing from "../routes/Landing";
+import Index from "../routes/client/Index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />} errorElement={<Error />}>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/client" element={<Client />} />
+      <Route index element={<Landing />} loader={rootLoader} />
+      <Route path="login" element={<Login />} loader={sessionLoader} />
+      <Route path="register" element={<Register />} loader={sessionLoader} />
+      <Route path="client" element={<Client />} loader={clientLoader}>
+        <Route index element={<Index />} />
+      </Route>
     </Route>
   )
 );

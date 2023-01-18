@@ -10,7 +10,7 @@ export const StateProvider = (props) => {
   const [headers, setHeaders] = useState(localHeaders || null);
   const [users, setUsers] = useState([]);
   const [channels, setChannels] = useState([]);
-  const [messages, setMessages] = useState([]);
+  const [dMessages, setDMessages] = useState([]);
   const [modal, setModal] = useState(false);
   const logout = () => {
     localStorage.removeItem("client");
@@ -19,7 +19,7 @@ export const StateProvider = (props) => {
     setHeaders(null);
     setUsers([]);
     setChannels([]);
-    setMessages([]);
+    setDMessages([]);
   };
   const initialState = {
     client,
@@ -30,8 +30,8 @@ export const StateProvider = (props) => {
     setUsers,
     channels,
     setChannels,
-    messages,
-    setMessages,
+    dMessages,
+    setDMessages,
     modal,
     setModal,
     logout,

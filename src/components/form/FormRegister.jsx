@@ -23,6 +23,7 @@ const FormRegister = () => {
       setError("");
       setClient(register.client);
       setHeaders(register.headers);
+      // navigate("/client/home");
       navigate("/client");
     }
   };
@@ -31,7 +32,10 @@ const FormRegister = () => {
   }, [data]);
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg rounded border p-5">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-auto max-w-lg rounded border p-5"
+    >
       <h1 className="mb-5 text-2xl font-bold">Register</h1>
       <EmailInput id="register_email" validate={true} setEmail={setEmail} />
       <PasswordInput

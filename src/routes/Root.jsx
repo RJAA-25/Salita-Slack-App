@@ -1,22 +1,32 @@
 import React, { useContext, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, redirect, useNavigation } from "react-router-dom";
+import Loading from "../components/loading/Loading";
 import Container from "../components/wrapper/Container";
-import { stateContext } from "../store/State";
+import { getLocal } from "../helpers/localStorage";
 
 const Root = () => {
-  const state = useContext(stateContext);
-  const navigate = useNavigate();
-  // useEffect(() => {
-  //   state.client ? navigate("/client") : navigate("/login");
-  // }, []);
-
+  const navigation = useNavigation();
   return (
     <>
       <Container>
-        <Outlet />
+        {navigation.state === "loading" ? <Loading /> : <Outlet />}
       </Container>
     </>
   );
+};
+
+export const rootLoader = () => {
+  console.log("rootLoader running");
+  const client = getLocal("client");
+  // return client ? redirect("/client/home") : redirect("/login");
+  return client ? redirect("/client") : redirect("/login");
+};
+
+export const sessionLoader = () => {
+  console.log("sessionLoader running");
+  const client = getLocal("client");
+  // return client ? redirect("/client/home") : null;
+  return client ? redirect("/client") : null;
 };
 
 export default Root;

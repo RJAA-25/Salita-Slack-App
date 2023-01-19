@@ -1,5 +1,5 @@
 import Header from "../components/brand/Header";
-import FormRegister from "../components/form/FormRegister";
+import RegisterForm from "../components/form/RegisterForm";
 import Content from "../components/wrapper/Content";
 
 const Register = () => {
@@ -7,7 +7,7 @@ const Register = () => {
     <>
       <Content>
         <Header />
-        <FormRegister />
+        <RegisterForm />
       </Content>
     </>
   );

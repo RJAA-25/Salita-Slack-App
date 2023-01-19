@@ -5,7 +5,9 @@ import Channels from "./channels/Channels";
 import DirectMessages from "./direct messages/DirectMessages";
 import Profile from "./profile/Profile";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { setChecked } = props;
+
   return (
     <div className="flex w-80 flex-col justify-between border bg-base-100">
       <Content>
@@ -16,8 +18,8 @@ const Sidebar = () => {
           <Icon icon={faArrowLeft} />
         </label>
         <div className="divider lg:hidden"></div>
-        <Channels />
-        <DirectMessages />
+        <Channels setChecked={setChecked} />
+        <DirectMessages setChecked={setChecked} />
       </Content>
       <Profile />
     </div>

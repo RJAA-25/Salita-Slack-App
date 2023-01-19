@@ -10,6 +10,7 @@ export const StateProvider = (props) => {
   const [channels, setChannels] = useState([]);
   const [dMessages, setDMessages] = useState([]);
   const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({});
   const logout = () => {
     removeLocal("client");
     removeLocal("headers");
@@ -32,6 +33,8 @@ export const StateProvider = (props) => {
     setDMessages,
     modal,
     setModal,
+    modalContent,
+    setModalContent,
     logout,
   };
 

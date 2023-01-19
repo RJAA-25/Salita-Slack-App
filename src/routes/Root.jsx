@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Outlet, redirect, useNavigation } from "react-router-dom";
-import Loading from "../components/loading/Loading";
+import Loading from "../components/utility/Loading";
+import Modal from "../components/utility/Modal";
 import Container from "../components/wrapper/Container";
 import { getLocal } from "../helpers/localStorage";
 
@@ -11,6 +12,7 @@ const Root = () => {
       <Container>
         {navigation.state === "loading" ? <Loading /> : <Outlet />}
       </Container>
+      <Modal />
     </>
   );
 };

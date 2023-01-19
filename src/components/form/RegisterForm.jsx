@@ -5,7 +5,7 @@ import { stateContext } from "../../store/State";
 import EmailInput from "./input/EmailInput";
 import PasswordInput from "./input/PasswordInput";
 
-const FormRegister = () => {
+const RegisterForm = () => {
   const { setClient, setHeaders } = useContext(stateContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,4 +52,4 @@ const FormRegister = () => {
   );
 };
 
-export default FormRegister;
+export default RegisterForm;

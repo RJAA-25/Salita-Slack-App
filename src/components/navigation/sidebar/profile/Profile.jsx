@@ -17,7 +17,7 @@ const Profile = () => {
     <div className="flex items-center gap-2 border p-5">
       <div className="grow overflow-hidden">
         <span className="block truncate font-semibold">{client.uid}</span>
-        <span className="text-xs tracking-wide">ID # {client.id}</span>
+        <span className="text-sm text-secondary">ID # {client.id}</span>
       </div>
       <button className="btn" onClick={handleClick}>
         <Icon icon={faDoorOpen} />

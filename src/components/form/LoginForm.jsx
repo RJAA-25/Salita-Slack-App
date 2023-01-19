@@ -5,7 +5,7 @@ import { loginUser } from "../../api/slack";
 import EmailInput from "./input/EmailInput";
 import PasswordInput from "./input/PasswordInput";
 
-const FormLogin = () => {
+const LoginForm = () => {
   const { setClient, setHeaders } = useContext(stateContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,4 +38,4 @@ const FormLogin = () => {
   );
 };
 
-export default FormLogin;
+export default LoginForm;

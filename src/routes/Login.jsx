@@ -1,5 +1,5 @@
 import Header from "../components/brand/Header";
-import FormLogin from "../components/form/FormLogin";
+import LoginForm from "../components/form/LoginForm";
 import Content from "../components/wrapper/Content";
 
 const Login = () => {
@@ -7,7 +7,7 @@ const Login = () => {
     <>
       <Content>
         <Header />
-        <FormLogin />
+        <LoginForm />
       </Content>
     </>
   );

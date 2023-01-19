@@ -35,7 +35,7 @@ const Client = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="client-drawer" className="drawer-overlay"></label>
-          <Sidebar />
+          <Sidebar setChecked={setChecked} />
         </div>
       </div>
     </>

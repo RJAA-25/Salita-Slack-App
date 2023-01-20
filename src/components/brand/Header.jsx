@@ -1,14 +1,9 @@
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { faComments } from "@fortawesome/free-regular-svg-icons";
+import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <header className="my-5 grid h-14 place-content-center rounded border border-red-500">
-      <Link to="/client" className="flex items-baseline gap-2 border p-2">
-        <Icon icon={faComments} className="text-lg" />
-        <span className="text-xl font-extrabold">salita</span>
-      </Link>
+    <header className="flex h-14 w-full items-center rounded border border-red-500">
+      <Logo />
     </header>
   );
 };

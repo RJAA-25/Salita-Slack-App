@@ -9,9 +9,12 @@ export const post = async (url, body, header = {}) => {
   }
 };
 
-export const get = async (url, header = {}) => {
+export const get = async (url, header = {}, param = {}) => {
   try {
-    const response = await axios.get(url, { headers: { ...header } });
+    const response = await axios.get(url, {
+      headers: { ...header },
+      params: { ...param },
+    });
     return response;
   } catch (error) {
     return error;

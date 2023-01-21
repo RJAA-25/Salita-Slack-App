@@ -4,7 +4,9 @@ import { getLocal, setLocal } from "../helpers/localStorage";
 
 const BASE_URL = "http://206.189.91.54//api/v1";
 
+// Login User
 export const loginUser = async (body) => {
+  toast.dismiss();
   try {
     const promise = post(`${BASE_URL}/auth/sign_in`, body);
     toast.promise(promise, {
@@ -21,8 +23,7 @@ export const loginUser = async (body) => {
       "expiry": Number(response.headers["expiry"]),
       "uid": response.headers["uid"],
     };
-    setLocal("client", client);
-    setLocal("headers", headers);
+    setLocal("salita", { client, headers });
 
     return { client, headers };
   } catch (error) {
@@ -30,7 +31,9 @@ export const loginUser = async (body) => {
   }
 };
 
+// Register User
 export const registerUser = async (body) => {
+  toast.dismiss();
   try {
     const promise = post(`${BASE_URL}/auth`, body);
     toast.promise(promise, {
@@ -47,8 +50,7 @@ export const registerUser = async (body) => {
       "expiry": Number(response.headers["expiry"]),
       "uid": response.headers["uid"],
     };
-    setLocal("client", client);
-    setLocal("headers", headers);
+    setLocal("salita", { client, headers });
 
     return { client, headers };
   } catch (error) {
@@ -56,21 +58,23 @@ export const registerUser = async (body) => {
   }
 };
 
+// Initialize Client
 export const initializeClient = async () => {
   const promise = toast.loading("Loading Data");
   try {
     const users = await getUsers();
     const channels = await getChannels();
-    const dMessages = await getDMessages();
+    const dMUsers = await getDMUsers();
     toast.success("Done", { id: promise });
-    return { users, channels, dMessages };
+    return { users, channels, dMUsers };
   } catch (error) {
     toast.error("Fail", { id: promise });
   }
 };
 
+// Retrieve All Users
 export const getUsers = async () => {
-  const headers = getLocal("headers");
+  const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/users`, headers);
     return response.data.data;
@@ -79,8 +83,9 @@ export const getUsers = async () => {
   }
 };
 
+// Retrieve User Channels
 export const getChannels = async () => {
-  const headers = getLocal("headers");
+  const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/channels`, headers);
     if (response.data.data) {
@@ -101,8 +106,9 @@ export const getChannels = async () => {
   }
 };
 
+// Retrieve Channel Details
 const channelDetails = async (channelID) => {
-  const headers = getLocal("headers");
+  const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/channels/${channelID}`, headers);
     return response.data.data;
@@ -111,12 +117,41 @@ const channelDetails = async (channelID) => {
   }
 };
 
-export const getDMessages = async () => {
-  const headers = getLocal("headers");
+// Retrieve Direct Message Users
+export const getDMUsers = async () => {
+  const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/users/recent`, headers);
     return response.data.data;
   } catch (error) {
     console.log(error);
   }
+};
+
+// Retrieve Messages
+export const getMessages = async (type, id) => {
+  const { headers } = getLocal("salita");
+  const params = {
+    "receiver_class": type,
+    "receiver_id": id,
+  };
+  try {
+    const response = await get(`${BASE_URL}/messages`, headers, params);
+    console.log(response);
+    return response.data.data;
+  } catch (error) {}
+};
+
+// Send Messages
+export const sendMessage = async (type, id, chat) => {
+  const { headers } = getLocal("salita");
+  const body = {
+    "receiver_class": type,
+    "receiver_id": id,
+    "body": chat,
+  };
+  try {
+    const response = await post(`${BASE_URL}/messages`, body, headers);
+    console.log(response);
+  } catch (error) {}
 };

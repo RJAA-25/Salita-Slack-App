@@ -4,33 +4,28 @@ import { getLocal, removeLocal } from "../helpers/localStorage";
 export const stateContext = createContext({});
 
 export const StateProvider = (props) => {
-  const [client, setClient] = useState(getLocal("client") || null);
-  const [headers, setHeaders] = useState(getLocal("headers") || null);
+  const [initialized, setInitialized] = useState(false);
   const [users, setUsers] = useState([]);
   const [channels, setChannels] = useState([]);
-  const [dMessages, setDMessages] = useState([]);
+  const [dMUsers, setDMUsers] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const logout = () => {
-    removeLocal("client");
-    removeLocal("headers");
-    setClient(null);
-    setHeaders(null);
+    removeLocal("salita");
+    setInitialized(false);
     setUsers([]);
     setChannels([]);
-    setDMessages([]);
+    setDMUsers([]);
   };
   const initialState = {
-    client,
-    setClient,
-    headers,
-    setHeaders,
+    initialized,
+    setInitialized,
     users,
     setUsers,
     channels,
     setChannels,
-    dMessages,
-    setDMessages,
+    dMUsers,
+    setDMUsers,
     modal,
     setModal,
     modalContent,

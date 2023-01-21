@@ -1,5 +1,4 @@
-import { check } from "prettier";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const SearchInput = (props) => {
   const { id, setID, setUID, data } = props;
@@ -70,7 +69,7 @@ function checkUser(value, data) {
   const filteredUIDs = data.filter((user) =>
     user.uid.includes(value.toLowerCase())
   );
-  filteredIDs.length > 0 ? (id = value) : (id = "");
-  filteredUIDs.length > 0 ? (uid = value) : (uid = "");
+  filteredIDs.length > 0 ? (id = filteredIDs) : (id = "");
+  filteredUIDs.length > 0 ? (uid = filteredUIDs) : (uid = "");
   return [id, uid];
 }

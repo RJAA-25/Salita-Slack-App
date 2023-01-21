@@ -7,6 +7,7 @@ const Modal = () => {
   const handleClose = () => {
     setTimeout(() => {
       setModalContent({});
+      setModal(false);
     }, 250);
   };
   return (

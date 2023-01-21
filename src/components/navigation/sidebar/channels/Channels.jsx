@@ -6,16 +6,24 @@ import { NavLink } from "react-router-dom";
 
 const Channels = (props) => {
   const { setChecked } = props;
-  const { channels } = useContext(stateContext);
+  const { channels, setModalContent } = useContext(stateContext);
+  const modalContent = {
+    title: "Create New Channel",
+    body: "",
+  };
+  const toggleModal = () => {
+    setChecked(false);
+    setModalContent(modalContent);
+  };
 
   return (
-    <div className="my-5">
-      <div className="flex items-center py-3">
+    <div className="mb-5">
+      <div className="flex items-center pb-3">
         <span className="grow font-bold">Channels</span>
         <label
           htmlFor="client-modal"
           className="btn-sm btn"
-          onClick={() => setChecked(false)}
+          onClick={toggleModal}
         >
           <Icon icon={faPlus} />
         </label>

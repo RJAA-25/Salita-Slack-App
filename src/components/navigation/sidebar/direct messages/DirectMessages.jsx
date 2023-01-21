@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { stateContext } from "../../../../store/State";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -7,31 +7,31 @@ import UserForm from "../../../form/UserForm";
 
 const DirectMessages = (props) => {
   const { setChecked } = props;
-  const { dMessages, setModalContent } = useContext(stateContext);
+  const { dMUsers, setModalContent } = useContext(stateContext);
   const modalContent = {
     title: "Send New Message",
     body: <UserForm />,
   };
-  const handleClick = () => {
+  const toggleModal = () => {
     setChecked(false);
     setModalContent(modalContent);
   };
 
   return (
-    <div className="my-5">
-      <div className="flex items-center py-3">
+    <div className="mb-5">
+      <div className="flex items-center pb-3">
         <span className="grow font-bold">Direct Messages</span>
         <label
           htmlFor="client-modal"
           className="btn-sm btn"
-          onClick={handleClick}
+          onClick={toggleModal}
         >
           <Icon icon={faPlus} />
         </label>
       </div>
-      {dMessages.length > 0 ? (
+      {dMUsers.length > 0 ? (
         <ul className="menu w-full">
-          {dMessages.map((dMessage) => (
+          {dMUsers.map((dMessage) => (
             <li
               key={dMessage.id}
               className="hover-bordered"

@@ -1,12 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { stateContext } from "../../store/State";
 import { loginUser } from "../../api/slack";
 import EmailInput from "./input/EmailInput";
 import PasswordInput from "./input/PasswordInput";
 
 const LoginForm = () => {
-  const { setClient, setHeaders } = useContext(stateContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,9 +16,6 @@ const LoginForm = () => {
       setError(login.error);
     } else {
       setError("");
-      setClient(login.client);
-      setHeaders(login.headers);
-      // navigate("/client/home");
       navigate("/client");
     }
   };

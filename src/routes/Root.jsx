@@ -1,16 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { Outlet, redirect, useNavigation } from "react-router-dom";
-import Loading from "../components/utility/Loading";
+import { Outlet, redirect } from "react-router-dom";
 import Modal from "../components/utility/Modal";
 import Container from "../components/wrapper/Container";
 import { getLocal } from "../helpers/localStorage";
 
 const Root = () => {
-  const navigation = useNavigation();
+  console.log("Passing through Root");
   return (
     <>
       <Container>
-        {navigation.state === "loading" ? <Loading /> : <Outlet />}
+        <Outlet />
       </Container>
       <Modal />
     </>
@@ -19,16 +17,14 @@ const Root = () => {
 
 export const rootLoader = () => {
   console.log("rootLoader running");
-  const client = getLocal("client");
-  // return client ? redirect("/client/home") : redirect("/login");
-  return client ? redirect("/client") : redirect("/login");
+  const salita = getLocal("salita");
+  return salita ? redirect("/client") : redirect("/login");
 };
 
 export const sessionLoader = () => {
   console.log("sessionLoader running");
-  const client = getLocal("client");
-  // return client ? redirect("/client/home") : null;
-  return client ? redirect("/client") : null;
+  const salita = getLocal("salita");
+  return salita ? redirect("/client") : null;
 };
 
 export default Root;

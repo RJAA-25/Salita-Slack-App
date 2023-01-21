@@ -1,12 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/slack";
-import { stateContext } from "../../store/State";
 import EmailInput from "./input/EmailInput";
 import PasswordInput from "./input/PasswordInput";
 
 const RegisterForm = () => {
-  const { setClient, setHeaders } = useContext(stateContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmation, setConfirmation] = useState("");
@@ -21,9 +19,6 @@ const RegisterForm = () => {
       setError(register.error);
     } else {
       setError("");
-      setClient(register.client);
-      setHeaders(register.headers);
-      // navigate("/client/home");
       navigate("/client");
     }
   };

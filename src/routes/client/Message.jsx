@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getMessages } from "../../api/slack";
+import { getLocal } from "../../helpers/localStorage";
+import { stateContext } from "../../store/State";
 import MessageCard from "../../components/card/MessageCard";
 import ChatForm from "../../components/form/ChatForm";
 import ChatList from "../../components/list/ChatList";
-import { getLocal } from "../../helpers/localStorage";
-import { stateContext } from "../../store/State";
 
 const Message = () => {
   const { messages, userID } = useLoaderData();
@@ -17,7 +17,7 @@ const Message = () => {
     <>
       <MessageCard user={user} />
       <ChatList id={userID} type="User" initial={messages} client={client} />
-      <ChatForm id="user-message" userID={userID} />
+      <ChatForm id="user-message" type="User" receiverID={userID} />
     </>
   );
 };

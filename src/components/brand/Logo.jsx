@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { faComments } from "@fortawesome/free-regular-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { getLocal } from "../../helpers/localStorage";
 
 const Logo = () => {

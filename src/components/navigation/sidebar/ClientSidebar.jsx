@@ -4,7 +4,7 @@ import Channels from "./channels/Channels";
 import DirectMessages from "./direct messages/DirectMessages";
 import Profile from "./profile/Profile";
 
-const Sidebar = (props) => {
+const ClientSidebar = (props) => {
   const { setChecked } = props;
 
   return (
@@ -22,4 +22,4 @@ const Sidebar = (props) => {
   );
 };
 
-export default Sidebar;
+export default ClientSidebar;

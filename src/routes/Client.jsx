@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { Outlet, useNavigate, useNavigation } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import { initializeClient } from "../api/slack";
 import { stateContext } from "../store/State";
 import ClientHeader from "../components/brand/ClientHeader";
-import Sidebar from "../components/navigation/sidebar/Sidebar";
 import Content from "../components/wrapper/Content";
 import Loading from "../components/utility/Loading";
 import LoadingContent from "../components/utility/LoadingContent";
+import ClientSidebar from "../components/navigation/sidebar/ClientSidebar";
 
 const Client = () => {
   const { initialized, setInitialized, setUsers, setChannels, setDMUsers } =
@@ -43,7 +43,7 @@ const Client = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="client-drawer" className="drawer-overlay"></label>
-            <Sidebar setChecked={setChecked} />
+            <ClientSidebar setChecked={setChecked} />
           </div>
         </div>
       ) : (

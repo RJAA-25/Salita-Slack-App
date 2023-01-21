@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast";
 import { get, post } from "./axios";
 import { getLocal, setLocal } from "../helpers/localStorage";
+import { getUnique } from "../helpers/unique";
 
 const BASE_URL = "http://206.189.91.54//api/v1";
 
@@ -122,7 +123,7 @@ export const getDMUsers = async () => {
   const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/users/recent`, headers);
-    return response.data.data;
+    return getUnique(response.data.data);
   } catch (error) {
     console.log(error);
   }
@@ -137,8 +138,7 @@ export const getMessages = async (type, id) => {
   };
   try {
     const response = await get(`${BASE_URL}/messages`, headers, params);
-    console.log(response);
-    return response.data.data;
+    return getUnique(response.data.data);
   } catch (error) {}
 };
 

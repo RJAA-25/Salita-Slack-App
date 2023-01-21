@@ -4,17 +4,17 @@ import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import { sendMessage } from "../../api/slack";
 
 const ChatForm = (props) => {
-  const { id, userID } = props;
+  const { id, type, receiverID } = props;
   const [chat, setChat] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendMessage("User", userID, chat);
+    sendMessage(type, receiverID, chat);
     setChat("");
   };
   return (
     <form
       onSubmit={handleSubmit}
-      className="absolute left-0 bottom-0 flex w-full items-center gap-3 border px-5 py-3"
+      className="relative bottom-0 left-0 flex w-full items-center gap-2"
     >
       <textarea
         name={id}

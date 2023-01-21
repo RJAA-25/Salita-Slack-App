@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getLocal, removeLocal } from "../helpers/localStorage";
+import { removeLocal } from "../helpers/localStorage";
 
 export const stateContext = createContext({});
 

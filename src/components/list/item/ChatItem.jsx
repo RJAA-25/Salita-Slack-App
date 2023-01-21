@@ -5,7 +5,7 @@ const ChatItem = (props) => {
   const {
     message: { body, created_at, sender },
     client,
-    uid = false,
+    showUID,
   } = props;
   const [toggle, setToggle] = useState(false);
 
@@ -13,7 +13,7 @@ const ChatItem = (props) => {
     <li
       className={`chat ${sender.id === client.id ? "chat-end" : "chat-start"}`}
     >
-      {uid && <div className="chat-header p-1">{sender.uid}</div>}
+      {showUID && <div className="chat-header p-1">{sender.uid}</div>}
       <div
         className={`chat-bubble hover:cursor-pointer ${
           sender.id === client.id ? "bg-neutral" : "bg-base-300"

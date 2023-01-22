@@ -89,32 +89,21 @@ export const getChannels = async () => {
   const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/channels`, headers);
-    if (response.data.data) {
-      // const channelIDs = response.data.data.map((channel) => channel.id);
-      // const channels = channelIDs.map(async (id) => {
-      //   const res = await channelDetails(id);
-      //   console.log("channel map", { ...res });
-      //   return res;
-      // });
-      // console.log("channels", channels);
-      // return channels;
-      return response.data.data;
-    } else {
-      return [];
-    }
+    if (response.data.data) return response.data.data;
+    else return [];
   } catch (error) {
     console.log(error);
   }
 };
 
 // Retrieve Channel Details
-const channelDetails = async (channelID) => {
+export const channelDetails = async (channelID) => {
   const { headers } = getLocal("salita");
   try {
     const response = await get(`${BASE_URL}/channels/${channelID}`, headers);
     return response.data.data;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
 
@@ -154,4 +143,42 @@ export const sendMessage = async (type, id, chat) => {
     const response = await post(`${BASE_URL}/messages`, body, headers);
     console.log(response);
   } catch (error) {}
+};
+
+// Create Channel
+export const createChannel = async (body) => {
+  const { headers } = getLocal("salita");
+  toast.dismiss();
+  const promise = toast.loading("Creating Channel");
+  try {
+    const response = await post(`${BASE_URL}/channels`, body, headers);
+    if (response.data.errors) {
+      toast.error("Creation failed", { id: promise });
+      return { error: response.data.errors[0] };
+    }
+    if (response.data.data) {
+      toast.success("Channel created", { id: promise });
+      return { data: response.data.data };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Add Channel Member
+export const addMembers = async (channelID, ids) => {
+  const { headers } = getLocal("salita");
+  const promise = toast.loading("Adding members");
+  try {
+    let response;
+    for (let id of ids) {
+      let body = { id: channelID, member_id: id };
+      response = await post(`${BASE_URL}/channel/add_member`, body, headers);
+    }
+    toast.success("Members added", { id: promise });
+    return { data: response.data.data.channel_members };
+  } catch (error) {
+    toast.error("Failed adding members", { id: promise });
+    console.log(error);
+  }
 };

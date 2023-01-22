@@ -1,20 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { stateContext } from "../../../../store/State";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import ChannelForm from "../../../form/ChannelForm";
+import { getChannels } from "../../../../api/slack";
 
 const Channels = (props) => {
   const { setChecked } = props;
-  const { channels, setModalContent } = useContext(stateContext);
+  const { channels, setChannels, setModalContent } = useContext(stateContext);
   const modalContent = {
     title: "Create New Channel",
-    body: "",
+    body: <ChannelForm />,
   };
   const toggleModal = () => {
     setChecked(false);
     setModalContent(modalContent);
   };
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const response = await getChannels();
+      setChannels(response);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="mb-5">

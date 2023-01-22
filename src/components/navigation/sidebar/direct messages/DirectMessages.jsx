@@ -4,10 +4,12 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import UserForm from "../../../form/UserForm";
+import { useEffect } from "react";
+import { getDMUsers } from "../../../../api/slack";
 
 const DirectMessages = (props) => {
   const { setChecked } = props;
-  const { dMUsers, setModalContent } = useContext(stateContext);
+  const { dMUsers, setDMUsers, setModalContent } = useContext(stateContext);
   const modalContent = {
     title: "Send New Message",
     body: <UserForm />,
@@ -16,6 +18,12 @@ const DirectMessages = (props) => {
     setChecked(false);
     setModalContent(modalContent);
   };
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const response = await getDMUsers();
+      setDMUsers(response);
+    }, 100);
+  }, []);
 
   return (
     <div className="mb-5">

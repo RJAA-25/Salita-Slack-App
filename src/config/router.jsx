@@ -7,7 +7,7 @@ import Root, { rootLoader, sessionLoader } from "../routes/Root";
 import Error from "../components/errors/Error";
 import Login from "../routes/Login";
 import Register from "../routes/Register";
-import Client from "../routes/Client";
+import Client, { clientLoader } from "../routes/Client";
 import Landing from "../routes/Landing";
 import Index from "../routes/client/Index";
 import Channel, { channelLoader } from "../routes/client/Channel";
@@ -19,7 +19,7 @@ const router = createBrowserRouter(
       <Route index element={<Landing />} loader={rootLoader} />
       <Route path="login" element={<Login />} loader={sessionLoader} />
       <Route path="register" element={<Register />} loader={sessionLoader} />
-      <Route path="client" element={<Client />}>
+      <Route path="client" element={<Client />} loader={clientLoader}>
         <Route index element={<Index />} />
         <Route
           path="channels/:channelID"

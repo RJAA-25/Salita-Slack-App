@@ -4,7 +4,7 @@ const UserList = (props) => {
   const { title, list, handleClick } = props;
   return (
     <>
-      <span className="sticky top-0 z-10 block bg-base-300 py-3 px-5 text-xl font-bold">
+      <span className="sticky top-0 z-10 block bg-accent py-3 px-5 text-xl font-bold text-white">
         {title}
       </span>
       <ul className="menu">

@@ -10,7 +10,7 @@ const Logo = () => {
   return (
     <Link
       to={destination}
-      className="mx-auto flex w-fit items-baseline gap-2 border p-2"
+      className="mx-auto flex w-fit items-baseline gap-2 rounded p-2 text-white transition hover:bg-accent"
     >
       <Icon icon={faComments} className="text-lg" />
       <span className="text-xl font-extrabold">salita</span>

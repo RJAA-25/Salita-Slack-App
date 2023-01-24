@@ -42,7 +42,7 @@ const TextInput = (props) => {
 
   return (
     <div className="form-control my-5">
-      <label htmlFor={id} className="mb-2 text-lg">
+      <label htmlFor={id} className="mb-2  text-lg">
         {name}
       </label>
       <input

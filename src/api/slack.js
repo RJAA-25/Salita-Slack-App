@@ -61,15 +61,15 @@ export const registerUser = async (body) => {
 
 // Initialize Client
 export const initializeClient = async () => {
-  const promise = toast.loading("Loading Data");
+  // const promise = toast.loading("Loading Data");
   try {
     const users = await getUsers();
     const channels = await getChannels();
     const dMUsers = await getDMUsers();
-    toast.success("Done", { id: promise });
+    // toast.success("Done", { id: promise });
     return { users, channels, dMUsers };
   } catch (error) {
-    toast.error("Fail", { id: promise });
+    // toast.error("Fail", { id: promise });
   }
 };
 
@@ -141,7 +141,7 @@ export const sendMessage = async (type, id, chat) => {
   };
   try {
     const response = await post(`${BASE_URL}/messages`, body, headers);
-    console.log(response);
+    return response;
   } catch (error) {}
 };
 

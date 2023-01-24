@@ -16,14 +16,16 @@ const ChatItem = (props) => {
       {showUID && <div className="chat-header p-1">{sender.uid}</div>}
       <div
         className={`chat-bubble hover:cursor-pointer ${
-          sender.id === client.id ? "bg-neutral" : "bg-base-300"
+          sender.id === client.id
+            ? "bg-accent text-white"
+            : "bg-secondary text-neutral"
         }`}
         onClick={() => setToggle((state) => !state)}
       >
         {body}
       </div>
       {toggle && (
-        <div className="chat-footer p-1 opacity-50">
+        <div className="chat-footer p-1 opacity-70">
           {formatDateTime(created_at)}
         </div>
       )}

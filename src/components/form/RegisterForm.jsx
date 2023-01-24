@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/slack";
 import EmailInput from "./input/EmailInput";
 import PasswordInput from "./input/PasswordInput";
@@ -29,7 +29,7 @@ const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-lg rounded border p-5"
+      className="mx-auto h-fit w-full max-w-lg rounded border border-accent p-5 shadow-xl"
     >
       <h1 className="mb-5 text-2xl font-bold">Register</h1>
       <EmailInput id="register_email" validate={true} setEmail={setEmail} />
@@ -40,7 +40,13 @@ const RegisterForm = () => {
         setConfirmation={setConfirmation}
       />
       {error && <p className="text-error">{error}</p>}
-      <button disabled={!valid} className="btn ml-auto block">
+      <p className="my-3 text-sm">
+        Already have an account?{" "}
+        <Link to="/login" className="link text-accent">
+          Login!
+        </Link>
+      </p>
+      <button disabled={!valid} className="btn-accent btn ml-auto block">
         Submit
       </button>
     </form>

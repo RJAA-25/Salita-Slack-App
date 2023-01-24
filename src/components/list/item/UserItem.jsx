@@ -5,10 +5,10 @@ const UserItem = (props) => {
   };
 
   return (
-    <li className="border border-base-300" onClick={handleClick}>
+    <li className="border border-secondary" onClick={handleClick}>
       <div className="flex flex-col items-start lg:flex-row lg:items-center lg:justify-between">
         <span>{user.uid}</span>
-        <span className="text-sm font-bold text-secondary"># {user.id}</span>
+        <span className="text-sm font-bold text-accent"># {user.id}</span>
       </div>
     </li>
   );

@@ -16,14 +16,16 @@ const Profile = () => {
     toast("Logged out");
   };
   return (
-    <div className="flex items-center gap-2 border p-5 lg:rounded">
+    <div className="flex items-center gap-2 border bg-secondary p-5 lg:rounded">
       <div className="grow overflow-hidden">
-        <span className="block truncate font-semibold">
+        <span className="block truncate font-semibold text-neutral">
           {salita.client?.uid}
         </span>
-        <span className="text-sm text-secondary">ID # {salita.client?.id}</span>
+        <span className="text-sm font-bold text-primary">
+          ID # {salita.client?.id}
+        </span>
       </div>
-      <button className="btn" onClick={handleClick}>
+      <button className="btn-error btn" onClick={handleClick}>
         <Icon icon={faDoorOpen} />
       </button>
     </div>

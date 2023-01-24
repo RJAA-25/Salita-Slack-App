@@ -11,7 +11,7 @@ const MemberList = (props) => {
   return (
     <>
       <span className="mb-5 block text-xl font-bold">Channel Members</span>
-      <ul className="menu w-full">
+      <ul className="menu">
         {members.map((member) => (
           <MemberItem
             key={member.id}

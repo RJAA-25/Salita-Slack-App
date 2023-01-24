@@ -21,17 +21,17 @@ const Channels = (props) => {
     const interval = setInterval(async () => {
       const response = await getChannels();
       setChannels(response);
-    }, 1000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="mb-5">
       <div className="flex items-center pb-3">
-        <span className="grow font-bold">Channels</span>
+        <span className="grow text-lg font-bold text-primary">Channels</span>
         <label
           htmlFor="client-modal"
-          className="btn-sm btn"
+          className="btn-primary btn-sm btn"
           onClick={toggleModal}
         >
           <Icon icon={faPlus} />

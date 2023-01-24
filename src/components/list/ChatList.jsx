@@ -12,13 +12,12 @@ const ChatList = (props) => {
     }, 1000);
 
     return () => {
-      console.log("Clear Interval");
       clearInterval(interval);
     };
   }, []);
 
   return (
-    <ul className="mb-3 grow overflow-y-auto rounded border py-5">
+    <ul className="mb-3 grow overflow-y-auto py-5">
       {messages.map((message) => (
         <ChatItem
           key={message.id}

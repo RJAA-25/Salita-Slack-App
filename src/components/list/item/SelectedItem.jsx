@@ -12,9 +12,12 @@ const SelectedItem = (props) => {
       <div className="flex w-full">
         <div className="flex grow flex-col items-start lg:flex-row lg:items-center lg:justify-between">
           <span>{user.uid}</span>
-          <span className="text-sm font-bold text-secondary"># {user.id}</span>
+          <span className="text-sm font-bold text-accent"># {user.id}</span>
         </div>
-        <button className="btn-sm btn" onClick={() => action(memberID)}>
+        <button
+          className="btn-error btn-sm btn"
+          onClick={() => action(memberID)}
+        >
           <Icon icon={faXmark} />
         </button>
       </div>

@@ -15,7 +15,7 @@ const MemberItem = (props) => {
         <span>
           {user.uid} {user.id === ownerID ? "(Owner)" : ""}
         </span>
-        <span className="text-sm font-bold text-secondary"># {user.id}</span>
+        <span className="text-sm font-bold text-accent"># {user.id}</span>
       </div>
     </li>
   );

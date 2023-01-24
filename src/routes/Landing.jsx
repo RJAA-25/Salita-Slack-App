@@ -1,10 +1,9 @@
-import React from "react";
-import Header from "../components/brand/Header";
+import Loading from "../components/utility/Loading";
 
 const Landing = () => {
   return (
     <>
-      <Header />
+      <Loading />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Outlet, useNavigate, useNavigation } from "react-router-dom";
+import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
 import { initializeClient } from "../api/slack";
 import { stateContext } from "../store/State";
 import ClientHeader from "../components/brand/ClientHeader";
@@ -40,7 +40,7 @@ const Client = () => {
   return (
     <>
       {initialized ? (
-        <div className="drawer drawer-mobile">
+        <div className="drawer drawer-mobile gap-10">
           <input
             id="client-drawer"
             type="checkbox"
@@ -55,7 +55,10 @@ const Client = () => {
             </Content>
           </div>
           <div className="drawer-side">
-            <label htmlFor="client-drawer" className="drawer-overlay"></label>
+            <label
+              htmlFor="client-drawer"
+              className="drawer-overlay backdrop-blur-sm"
+            ></label>
             <ClientSidebar setChecked={setChecked} />
           </div>
         </div>
@@ -64,6 +67,11 @@ const Client = () => {
       )}
     </>
   );
+};
+
+export const clientLoader = () => {
+  const salita = getLocal("salita");
+  return !salita ? redirect("/login") : null;
 };
 
 export default Client;

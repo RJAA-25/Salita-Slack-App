@@ -46,7 +46,10 @@ const Channel = () => {
           />
         </div>
         <div className="drawer-side">
-          <label htmlFor="channel-drawer" className="drawer-overlay"></label>
+          <label
+            htmlFor="channel-drawer"
+            className="drawer-overlay backdrop-blur-sm"
+          ></label>
           <ChannelSidebar
             ownerID={ownerID}
             channelID={channelID}

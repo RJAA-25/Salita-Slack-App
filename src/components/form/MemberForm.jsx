@@ -15,7 +15,9 @@ const MemberForm = (props) => {
     (acc, cur) => [...acc, cur.user_id],
     []
   );
-  const filteredUsers = users.filter((user) => !currentIDs.includes(user.id));
+  const filteredUsers = users.filter(
+    (user) => !currentIDs.includes(user.id) && !members.includes(user.id)
+  );
   const handleClick = (user) => {
     setID("");
     setUID("");
@@ -43,16 +45,31 @@ const MemberForm = (props) => {
         setUID={setUID}
         data={filteredUsers}
       />
-      <div className="relative max-h-48 overflow-y-auto overflow-x-clip rounded-lg bg-base-200">
-        {ID && <UserList title="ID" list={ID} handleClick={handleClick} />}
-        {UID && <UserList title="UID" list={UID} handleClick={handleClick} />}
+      <div className="relative max-h-48 overflow-y-auto overflow-x-clip rounded-lg">
+        {ID || UID ? (
+          <>
+            {ID && <UserList title="ID" list={ID} handleClick={handleClick} />}
+            {UID && (
+              <UserList title="UID" list={UID} handleClick={handleClick} />
+            )}
+          </>
+        ) : (
+          <img
+            src="/src/assets/images/search.png"
+            alt="search"
+            className="mx-auto max-h-48"
+          />
+        )}
       </div>
-
       <div className="my-5 flex justify-end gap-3">
-        <label htmlFor="client-modal" className="btn" onClick={handleClose}>
+        <label
+          htmlFor="client-modal"
+          className="btn-secondary btn"
+          onClick={handleClose}
+        >
           Cancel
         </label>
-        <button className="btn" type="submit">
+        <button className="btn-accent btn" type="submit">
           Add
         </button>
       </div>

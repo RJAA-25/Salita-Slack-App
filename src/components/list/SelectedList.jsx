@@ -17,7 +17,7 @@ const SelectedList = (props) => {
               <span>
                 {owner.uid} <span className="font-light">(Owner)</span>
               </span>
-              <span className="text-sm font-bold text-secondary">
+              <span className="text-sm font-bold text-accent">
                 # {owner.id}
               </span>
             </div>

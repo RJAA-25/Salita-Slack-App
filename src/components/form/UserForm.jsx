@@ -32,12 +32,30 @@ const UserForm = () => {
           setUID={setUID}
           data={users}
         />
-        <div className="relative max-h-80 overflow-y-auto overflow-x-clip rounded-lg bg-base-200">
-          {ID && <UserList title="ID" list={ID} handleClick={handleClick} />}
-          {UID && <UserList title="UID" list={UID} handleClick={handleClick} />}
+        <div className="relative max-h-80 overflow-y-auto overflow-x-clip rounded-lg">
+          {ID || UID ? (
+            <>
+              {ID && (
+                <UserList title="ID" list={ID} handleClick={handleClick} />
+              )}
+              {UID && (
+                <UserList title="UID" list={UID} handleClick={handleClick} />
+              )}
+            </>
+          ) : (
+            <img
+              src="/src/assets/images/search.png"
+              alt="search"
+              className="mx-auto max-h-80"
+            />
+          )}
         </div>
         <div className="my-5 text-right">
-          <label htmlFor="client-modal" className="btn" onClick={handleClose}>
+          <label
+            htmlFor="client-modal"
+            className="btn-secondary btn"
+            onClick={handleClose}
+          >
             Cancel
           </label>
         </div>

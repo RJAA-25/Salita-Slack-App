@@ -22,16 +22,19 @@ const DirectMessages = (props) => {
     const interval = setInterval(async () => {
       const response = await getDMUsers();
       setDMUsers(response);
-    }, 100);
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="mb-5">
       <div className="flex items-center pb-3">
-        <span className="grow font-bold">Direct Messages</span>
+        <span className="grow text-lg font-bold text-primary">
+          Direct Messages
+        </span>
         <label
           htmlFor="client-modal"
-          className="btn-sm btn"
+          className="btn-primary btn-sm btn"
           onClick={toggleModal}
         >
           <Icon icon={faPlus} />

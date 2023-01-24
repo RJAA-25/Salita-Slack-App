@@ -61,16 +61,20 @@ const ChannelForm = () => {
         setUID={setUID}
         data={filteredUsers}
       />
-      <div className="relative max-h-48 overflow-y-auto overflow-x-clip rounded-lg bg-base-200">
+      <div className="relative max-h-48 overflow-y-auto overflow-x-clip rounded-lg">
         {ID && <UserList title="ID" list={ID} handleClick={handleClick} />}
         {UID && <UserList title="UID" list={UID} handleClick={handleClick} />}
       </div>
 
       <div className="my-5 flex justify-end gap-3">
-        <label htmlFor="client-modal" className="btn" onClick={handleClose}>
+        <label
+          htmlFor="client-modal"
+          className="btn-secondary btn"
+          onClick={handleClose}
+        >
           Cancel
         </label>
-        <button className="btn" type="submit">
+        <button className="btn-accent btn" type="submit">
           Create
         </button>
       </div>

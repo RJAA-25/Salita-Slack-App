@@ -26,15 +26,15 @@ const ChannelSidebar = (props) => {
   };
 
   return (
-    <div className="flex w-80 flex-col justify-between border bg-base-100 lg:py-5">
+    <div className="flex w-96 flex-col justify-between bg-base-100 lg:py-5">
       <div className="grow overflow-y-auto p-5">
         <div className="flex justify-between">
           {client.id === ownerID && (
-            <button className="btn" onClick={toggleModal}>
+            <button className="btn-accent btn" onClick={toggleModal}>
               <Icon icon={faUserPlus} />
             </button>
           )}
-          <label htmlFor="channel-drawer" className="btn">
+          <label htmlFor="channel-drawer" className="btn-secondary btn">
             <Icon icon={faArrowRight} />
           </label>
         </div>

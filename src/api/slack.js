@@ -3,7 +3,12 @@ import { get, post } from "./axios";
 import { getLocal, setLocal } from "../helpers/localStorage";
 import { getUnique } from "../helpers/unique";
 
-const BASE_URL = "http://206.189.91.54//api/v1";
+// For Developement
+// const BASE_URL = "http://206.189.91.54//api/v1";
+
+// For Production
+// Configured in _redirects file for Netlify
+const BASE_URL = "/api";
 
 // Login User
 export const loginUser = async (body) => {

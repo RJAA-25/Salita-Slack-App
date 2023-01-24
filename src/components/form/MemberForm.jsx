@@ -55,7 +55,7 @@ const MemberForm = (props) => {
           </>
         ) : (
           <img
-            src="/src/assets/images/search.png"
+            src="/images/search.png"
             alt="search"
             className="mx-auto max-h-48"
           />

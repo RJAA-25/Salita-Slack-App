@@ -9,7 +9,7 @@ const Login = () => {
         <Header />
         <div className="my-5 flex grow">
           <div className="hidden grow self-center lg:block">
-            <img src="src/assets/images/login.png" alt="login" />
+            <img src="/images/login.png" alt="login" />
           </div>
           <LoginForm />
         </div>

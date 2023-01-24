@@ -9,7 +9,7 @@ const Register = () => {
         <Header />
         <div className="my-5 flex grow">
           <div className="hidden grow self-center lg:block">
-            <img src="src/assets/images/register.png" alt="register" />
+            <img src="/images/register.png" alt="register" />
           </div>
           <RegisterForm />
         </div>

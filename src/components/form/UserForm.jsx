@@ -44,7 +44,7 @@ const UserForm = () => {
             </>
           ) : (
             <img
-              src="/src/assets/images/search.png"
+              src="/images/search.png"
               alt="search"
               className="mx-auto max-h-80"
             />

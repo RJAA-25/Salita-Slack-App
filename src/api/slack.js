@@ -8,13 +8,13 @@ import { getUnique } from "../helpers/unique";
 
 // For Production
 // Configured in _redirects file for Netlify
-const BASE_URL = "/api/";
+const BASE_URL = "/api";
 
 // Login User
 export const loginUser = async (body) => {
   toast.dismiss();
   try {
-    const promise = post(`${BASE_URL}auth/sign_in`, body);
+    const promise = post(`${BASE_URL}/auth/sign_in`, body);
     toast.promise(promise, {
       loading: "Logging in",
       success: "Logged in",
@@ -41,7 +41,7 @@ export const loginUser = async (body) => {
 export const registerUser = async (body) => {
   toast.dismiss();
   try {
-    const promise = post(`${BASE_URL}auth`, body);
+    const promise = post(`${BASE_URL}/auth`, body);
     toast.promise(promise, {
       loading: "Creating account",
       success: "Account registered",
@@ -82,7 +82,7 @@ export const initializeClient = async () => {
 export const getUsers = async () => {
   const { headers } = getLocal("salita");
   try {
-    const response = await get(`${BASE_URL}users`, headers);
+    const response = await get(`${BASE_URL}/users`, headers);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -93,7 +93,7 @@ export const getUsers = async () => {
 export const getChannels = async () => {
   const { headers } = getLocal("salita");
   try {
-    const response = await get(`${BASE_URL}channels`, headers);
+    const response = await get(`${BASE_URL}/channels`, headers);
     if (response.data.data) return response.data.data;
     else return [];
   } catch (error) {
@@ -105,7 +105,7 @@ export const getChannels = async () => {
 export const channelDetails = async (channelID) => {
   const { headers } = getLocal("salita");
   try {
-    const response = await get(`${BASE_URL}channels/${channelID}`, headers);
+    const response = await get(`${BASE_URL}/channels/${channelID}`, headers);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -116,7 +116,7 @@ export const channelDetails = async (channelID) => {
 export const getDMUsers = async () => {
   const { headers } = getLocal("salita");
   try {
-    const response = await get(`${BASE_URL}users/recent`, headers);
+    const response = await get(`${BASE_URL}/users/recent`, headers);
     return getUnique(response.data.data);
   } catch (error) {
     console.log(error);
@@ -131,7 +131,7 @@ export const getMessages = async (type, id) => {
     "receiver_id": id,
   };
   try {
-    const response = await get(`${BASE_URL}messages`, headers, params);
+    const response = await get(`${BASE_URL}/messages`, headers, params);
     return getUnique(response.data.data);
   } catch (error) {}
 };
@@ -145,7 +145,7 @@ export const sendMessage = async (type, id, chat) => {
     "body": chat,
   };
   try {
-    const response = await post(`${BASE_URL}messages`, body, headers);
+    const response = await post(`${BASE_URL}/messages`, body, headers);
     return response;
   } catch (error) {}
 };
@@ -156,7 +156,7 @@ export const createChannel = async (body) => {
   toast.dismiss();
   const promise = toast.loading("Creating Channel");
   try {
-    const response = await post(`${BASE_URL}channels`, body, headers);
+    const response = await post(`${BASE_URL}/channels`, body, headers);
     if (response.data.errors) {
       toast.error("Creation failed", { id: promise });
       return { error: response.data.errors[0] };
@@ -178,7 +178,7 @@ export const addMembers = async (channelID, ids) => {
     let response;
     for (let id of ids) {
       let body = { id: channelID, member_id: id };
-      response = await post(`${BASE_URL}channel/add_member`, body, headers);
+      response = await post(`${BASE_URL}/channel/add_member`, body, headers);
     }
     toast.success("Members added", { id: promise });
     return { data: response.data.data.channel_members };

@@ -8,7 +8,7 @@ import { getUnique } from "../helpers/unique";
 
 // For Production
 // Configured in _redirects file for Netlify
-const BASE_URL = "https://salita.netlify.app/api";
+const BASE_URL = "/api";
 
 // Login User
 export const loginUser = async (body) => {

@@ -23,6 +23,7 @@ The project is intened to practice sending and fetching data from an API, handli
 - React Router
 - FontAwesome
 - DiceBear Avatars
+- unDraw
 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/88828088/227802647-b7ab6df5-85b4-49b9-b99f-7ce5f6825019.png)
